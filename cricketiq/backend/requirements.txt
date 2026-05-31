@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pandas
+numpy
+python-dotenv
+httpx
+
+# Qualcomm sponsored Hackathon optional edge AI dependencies
+# onnxruntime
+# qai-hub

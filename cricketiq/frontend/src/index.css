@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cricket-dark-1 text-white font-sans overflow-x-hidden antialiased;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(0, 200, 81, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(0, 180, 255, 0.05) 0px, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300c851' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+/* Custom Scrollbar for sports feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cricket-dark-1;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cricket-card-border rounded-full hover:bg-cricket-green transition-colors duration-200;
+}
+
+/* Custom styles and glows */
+.glow-green {
+  text-shadow: 0 0 15px rgba(0, 200, 81, 0.6);
+}
+
+.glow-blue {
+  text-shadow: 0 0 15px rgba(0, 180, 255, 0.6);
+}
+
+.card-glow-green {
+  box-shadow: 0 0 30px rgba(0, 200, 81, 0.05);
+}
+
+.card-glow-blue {
+  box-shadow: 0 0 30px rgba(0, 180, 255, 0.05);
+}
+
+/* Custom Glassmorphism Card styling */
+.premium-card {
+  @apply bg-cricket-card-bg border border-cricket-card-border rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 backdrop-blur-md relative overflow-hidden;
+}
+
+.premium-card::before {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent;
+}

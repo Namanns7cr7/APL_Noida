@@ -55,11 +55,18 @@ def normalize_deliveries(df: pd.DataFrame) -> pd.DataFrame:
     """Rename columns to canonical names based on mappings."""
     rename_map = {}
     for canonical, candidates in COLUMN_MAPPINGS.items():
+        if canonical in df.columns:
+            continue
         for col in candidates:
             if col in df.columns and col != canonical:
-                rename_map[col] = canonical
-                break
+                # Ensure we don't map to a name already destined for rename
+                if canonical not in rename_map.values():
+                    rename_map[col] = canonical
+                    break
     df = df.rename(columns=rename_map)
+    # De-duplicate columns to ensure Series is always returned on selection
+    df = df.loc[:, ~df.columns.duplicated()]
+    
     # Ensure numeric types
     for col in ["batsman_runs", "total_runs", "extras", "is_wicket", "over", "ball", "inning"]:
         if col in df.columns:
